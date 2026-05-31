@@ -1,4 +1,5 @@
-# 🎯 Job Role Prediction using Machine Learning & Django
+# About my first project on github
+#🎯 Job Role Prediction using Machine Learning & Django
 
 A complete beginner-friendly web app that predicts a candidate's job role
 using 6 ML algorithms, built with Python, Scikit-learn, and Django.
