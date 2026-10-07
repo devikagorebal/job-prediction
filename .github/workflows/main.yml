@@ -1,0 +1,43 @@
+name: Job Prediction - Django CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install django
+          pip install scikit-learn
+          pip install pandas
+          pip install numpy
+
+      - name: Check Python syntax
+        run: |
+          python -m compileall .
+
+      - name: Run Django migrations
+        run: |
+          python manage.py migrate
+
+      - name: Check Django project
+        run: |
+          python manage.py check
